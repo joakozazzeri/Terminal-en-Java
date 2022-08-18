@@ -1,16 +1,9 @@
 package app;
 
 import Clases_Generales.*;
-import Excepciones.OpcionInvalida;
-import Excepciones.UsuarioPassIncorrecto;
 import Menu.PrintsMenu;
 import Menu.FuncionesMenu;
 
-import java.awt.*;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Locale;
 import java.util.Scanner;
 

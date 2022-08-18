@@ -51,7 +51,8 @@ public class PrintsMenu {
     }
 
     public void printGestionChoferes(){
-        System.out.println("\n1- Mostrar choferes.");
+        System.out.println("\nGESTIÓN CHOFERES:");
+        System.out.println("1- Mostrar choferes.");
         System.out.println("2- Agregar un chofer.");
         System.out.println("3- Buscar chofer por DNI.");
         System.out.println("4- Modificar un chofer.");
@@ -68,7 +69,8 @@ public class PrintsMenu {
     }
 
     public void printGestionMicros(){
-        System.out.println("\n1- Mostrar micros.");
+        System.out.println("\nGESTIÓN MICROS:");
+        System.out.println("1- Mostrar micros.");
         System.out.println("2- Agregar un micro.");
         System.out.println("3- Modificar un micro.");
         System.out.println("\n0- Volver al menú principal.");
@@ -83,7 +85,8 @@ public class PrintsMenu {
     }
 
     public void printGestionViajes(){
-        System.out.println("\n1- Mostrar viajes.");
+        System.out.println("\nGESTIÓN VIAJES:");
+        System.out.println("1- Mostrar viajes.");
         System.out.println("2- Agregar un viaje.");
         System.out.println("\n0- Volver al menú principal.");
     }

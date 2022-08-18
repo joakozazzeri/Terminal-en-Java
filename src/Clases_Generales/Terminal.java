@@ -3,14 +3,10 @@ package Clases_Generales;
 import Clases_Contenedoras.HashMapGenerico;
 import Clases_Contenedoras.HashSetClientes;
 import Clases_Contenedoras.ArrayListViajes;
-import Excepciones.OpcionInvalida;
 import Excepciones.UsuarioPassIncorrecto;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Scanner;
 
 public class Terminal {
     private HashMapGenerico<String, Micro> micros;

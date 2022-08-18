@@ -42,6 +42,12 @@ public class FuncionesMenu {
         String telefono = teclado.nextLine();
         System.out.println("7- Mail:");
         String mail = teclado.nextLine();
+        while (!mail.contains("@") || !mail.contains(".")){
+            System.out.println("El mail debe contener @ y .: intente nuevamente.");
+
+            mail = teclado.nextLine();
+
+        }
         System.out.println("8- Contraseña: ");
         String pass = teclado.nextLine();
 
@@ -95,19 +101,37 @@ public class FuncionesMenu {
 
         switch(seleccionUser) {
             case 1:
-                System.out.println(terminal.ofrecerViajesAlUsuario());
-                System.out.println("Ingrese el ID del viaje que desea comprar: ");
-                int idViaje = teclado.nextInt();
-                teclado.nextLine();
-                if (terminal.comprarViaje(idViaje)) System.out.println("El boleto se compró exitosamente.");
-                else System.out.println("Ese ID de viaje no existe. Intente nuevamente");
+                if (terminal.ofrecerViajesAlUsuario().isEmpty()) {
+                    System.out.println("\n---------------------------------------------");
+                    System.out.println("NO HAY VIAJES DISPONIBLES.");
+                    System.out.println("---------------------------------------------");
+
+                }
+                else {
+                    System.out.println(terminal.ofrecerViajesAlUsuario());
+                    System.out.println("Ingrese el ID del viaje que desea comprar: ");
+                    int idViaje = teclado.nextInt();
+                    teclado.nextLine();
+                    if (terminal.comprarViaje(idViaje)) System.out.println("El boleto se compró exitosamente.");
+                    else System.out.println("Ese ID de viaje no existe. Intente nuevamente");
+                }
                 break;
             case 2:
-                System.out.println(terminal.ofrecerViajesAlUsuario());
+                if (terminal.ofrecerViajesAlUsuario().isEmpty()) {
+                    System.out.println("\n---------------------------------------------");
+                    System.out.println("NO HAY VIAJES DISPONIBLES.");
+                    System.out.println("---------------------------------------------");
+                }
+                else System.out.println(terminal.ofrecerViajesAlUsuario());
                 break;
             case 3:
                 System.out.println("Lista de boletos que usted posee:");
-                System.out.println(terminal.mostrarBoletosUsuario());
+                if (terminal.mostrarBoletosUsuario().isEmpty()){
+                    System.out.println("\n---------------------------------------------");
+                    System.out.println("NO POSEE BOLETOS.");
+                    System.out.println("---------------------------------------------");
+                }
+                else System.out.println(terminal.mostrarBoletosUsuario());
                 break;
             case 4:
                 System.out.println("Sus datos: ");
@@ -139,6 +163,7 @@ public class FuncionesMenu {
         }
         return sesionActiva;
     }
+
 
     public boolean modificarUsuario(Scanner teclado, Terminal terminal) {
         Cliente sesionActual;
@@ -267,10 +292,13 @@ public class FuncionesMenu {
                 break;
             case 3:
                 System.out.println("Ingrese el DNI del usuario que desea conocer los boletos que posee:");
-                dniBuscado = teclado.nextLine();
-                StringBuilder boletosCliente = terminal.verBoletosCliente(dniBuscado);
-                if (boletosCliente==null) System.out.println("El cliente no posee boletos.");
-                else System.out.println(boletosCliente);
+                aux = retornaClientePorDni(teclado, terminal, aux);
+                if (aux==null) System.out.println("No se encontró el cliente.");
+                else {
+                    StringBuilder boletosCliente = terminal.verBoletosCliente(aux.getDni());
+                    if (boletosCliente.isEmpty()) System.out.println("El cliente no posee boletos.");
+                    else System.out.println(boletosCliente);
+                }
                 break;
             case 4:
                 System.out.println("Ingrese el dni del cliente que desea dar de baja:");
